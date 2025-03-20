@@ -1,0 +1,7 @@
+1
+1
+1.00
+1
+1
+[Topic=rtms-stream-mylogs][MessageFound=(02:38:22 2005 Jul 24 02:38:23 combo ftpd16781: ANONYMOUS FTP LOGIN FROM 84.102.20.2  (anonymous) Jul 24 02:38:23 com)][UserSearch=(anonymous ftp login)];
+ANONYMOUS FTP LOGIN;

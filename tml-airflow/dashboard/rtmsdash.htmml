@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard - Dark Style</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./css/rtmsstyles.css" />
+  </head>
+
+  <body style="background: linear-gradient(135deg,  rgba(151, 0, 0,1) 0%,rgba(0, 128, 255,1) 50%,rgba(0, 128, 255,1) 51%,rgba(51, 0, 0,1) 100%);">
+  <div class="row justify-content-md-center">
+
+    <div id="wrapper">
+	
+      <div class="content-area">
+	  <center>
+<label id="maintitle"><b><h1><font color='white'><b>Real-Time Cyber Threats and Network Monitoring with TML Real-Time Memory</b></h1></b></label>
+
+        <div class="container-fluid">
+         
+          <div class="main">
+            <div class="row mt-4">
+              <div class="col-md-5">
+                <div class="box columnbox mt-4">
+                  <div id="columnchart"></div>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="box  mt-4">
+                  <div id="linechart"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-5">
+                <div class="box radialbox mt-4">
+                  <div id="circlechart"></div>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="box mt-4">
+                  <div class="mt-4">
+                    <div id="progress1"></div>
+                  </div>
+                  <div class="mt-4">
+                    <div id="progress2"></div>
+                  </div>
+                  <div class="mt-4">
+                    <div id="progress3"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+  
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="./js/rtmsscripts.js"></script>
+  </body>
+</html>

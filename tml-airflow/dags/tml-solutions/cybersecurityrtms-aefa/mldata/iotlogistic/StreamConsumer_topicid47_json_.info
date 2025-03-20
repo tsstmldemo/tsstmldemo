@@ -1,0 +1,19 @@
+{
+ "Algokey": "StreamConsumer_topicid47_json",
+ "Algo": "StreamConsumer_topicid47_jsonlgt",
+ "Forecastaccuracy": 1,
+ "DependentVariable": "failure_prob",
+ "Filename": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid47.csv",
+ "Fieldnames": "Date,topicid47_Power_preprocessed_Trend,topicid47_Voltage_preprocessed_Trend,topicid47_Current_preprocessed_Trend",
+ "TestResultsFile": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid47_json_predictions.csv",
+ "Deployed": 1,
+ "DeployedTo": "Local Machine Deploy Folder",
+ "Created": "2025-03-02T21:07:19.306109761Z",
+ "Fullpathtomodels": "/Viper-ml/viperlogs/iotlogistic",
+ "Identifier": "Voltage~Line-Voltage-(mV)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Voltage),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=e6df90b8-7faa-11ec-ded0-0be67d5b10ed(123056,32.15743,-82.90712,Voltage,n/a,n/a,{});e6fecece-7faa-11ec-9cc0-aaaf6a3b5a59(122899,32.15743,-82.90712,Voltage,n/a,n/a,{});e75639e8-7faa-11ec-35f9-3c8c02712858(122787,32.15743,-82.90712,Voltage,n/a,n/a,{});e5d2a3c2-7faa-11ec-d48a-1417f56da570(123056,32.15743,-82.90712,Voltage,n/a,n/a,{});e601aa3c-7faa-11ec-f4f8-672b7ea0f2d1(122831,32.15743,-82.90712,Voltage,n/a,n/a,{});e68afe86-7faa-11ec-b284-e8f0d7aa4f41(123171,32.15743,-82.90712,Voltage,n/a,n/a,{});e6c21038-7faa-11ec-311d-b8c3152904e0(123171,32.15743,-82.90712,Voltage,n/a,n/a,{});e71da628-7faa-11ec-749d-84c1fdf58b8e(123171,32.15743,-82.90712,Voltage,n/a,n/a,{});e625cec6-7faa-11ec-8ff5-4c9abc73dc76(123171,32.15743,-82.90712,Voltage,n/a,n/a,{});e63859e2-7faa-11ec-1ce0-0e629022a5d4(123171,32.15743,-82.90712,Voltage,n/a,n/a,{});e6523ac4-7faa-11ec-49e0-571400a227b1(123056,32.15743,-82.90712,Voltage,n/a,n/a,{});e66cc466-7faa-11ec-ce2b-c80cdaf8deb0(122942,32.15743,-82.90712,Voltage,n/a,n/a,{});e6a98d7e-7faa-11ec-7142-d30a5e765487(123010,32.15743,-82.90712,Voltage,n/a,n/a,{});e739ff08-7faa-11ec-fe9a-c83b3899780e(123171,32.15743,-82.90712,Voltage,n/a,n/a,{});e7744ee2-7faa-11ec-7963-3df694770cd8(122942,32.15743,-82.90712,Voltage,n/a,n/a,{})~latlong=~mainuid=AC000W016399219",
+ "AccuracyThreshold": 0.55,
+ "Minmax": "-112.688:0.000,0.000:7.728,-1.973:0.000",
+ "MachineLearningAlgorithm": "Logistic Regression",
+ "ParameterEstimates": "-0.1235169,-1.7082202,2.7016475,-0.5961103",
+ "HasConstantTerm": 1
+}
