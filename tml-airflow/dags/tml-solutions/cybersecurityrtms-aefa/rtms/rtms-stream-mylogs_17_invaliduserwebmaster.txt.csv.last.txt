@@ -1,0 +1,7 @@
+1
+1
+1.00
+93
+93
+[Topic=rtms-stream-mylogs][MessageFound=(AK-IN ATTEMPT! Dec 10 06:55:46 LabSZ sshd24200: Invalid user webmaster from 173.234.31.186 Dec 10 06:55:46 LabSZ sshd24)][UserSearch=(invalid user webmaster)];
+invalid user webmaster;
