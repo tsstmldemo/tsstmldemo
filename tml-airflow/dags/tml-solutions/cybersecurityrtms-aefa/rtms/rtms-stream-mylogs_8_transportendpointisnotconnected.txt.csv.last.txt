@@ -1,0 +1,7 @@
+1
+1
+1.00
+1
+1
+[Topic=rtms-stream-mylogs][MessageFound=(5 23:23:13 combo ftpd26463: getpeername (ftpd): Transport endpoint is not connected Jul 25 23:23:13 combo ftpd26466: getpeername (f)][UserSearch=(transport endpoint is not connected)];
+Transport endpoint is not connected;

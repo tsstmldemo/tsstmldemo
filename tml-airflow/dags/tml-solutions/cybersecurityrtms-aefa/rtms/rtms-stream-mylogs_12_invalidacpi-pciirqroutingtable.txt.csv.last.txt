@@ -1,0 +1,8 @@
+0
+1
+0.00
+592
+91
+[Topic=rtms-stream-mylogs][MessageFound=(outing entries Jul 27 14:41:59 combo kernel: PCI: Invalid ACPI-PCI IRQ routing table Jul 27 14:41:59 combo kernel: PCI: Probing PCI ha)][UserSearch=(invalid acpi-pci irq routing table)];
+Invalid ACPI-PCI IRQ routing table;
+

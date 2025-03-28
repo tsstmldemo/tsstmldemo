@@ -1,0 +1,19 @@
+{
+ "Algokey": "StreamConsumer_topicid27_json",
+ "Algo": "StreamConsumer_topicid27_jsonlgt",
+ "Forecastaccuracy": 1,
+ "DependentVariable": "failure_prob",
+ "Filename": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid27.csv",
+ "Fieldnames": "Date,topicid27_Power_preprocessed_Trend,topicid27_Voltage_preprocessed_Trend,topicid27_Current_preprocessed_Trend",
+ "TestResultsFile": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid27_json_predictions.csv",
+ "Deployed": 1,
+ "DeployedTo": "Local Machine Deploy Folder",
+ "Created": "2025-03-02T21:06:20.770833035Z",
+ "Fullpathtomodels": "/Viper-ml/viperlogs/iotlogistic",
+ "Identifier": "Current~Current-(mA)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Current),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=e1d7ee30-7faa-11ec-3b2a-f4c3de2fd679(0,41.60322,-73.08775,Current,n/a,n/a,{});e26365d2-7faa-11ec-b060-a720ad6556dd(0,41.60322,-73.08775,Current,n/a,n/a,{});e2dbda80-7faa-11ec-5b8f-008fe281245c(0,41.60322,-73.08775,Current,n/a,n/a,{});e3688e80-7faa-11ec-8369-7898fa5525fe(0,41.60322,-73.08775,Current,n/a,n/a,{});e22dd584-7faa-11ec-7530-7388fdfb90b2(0,41.60322,-73.08775,Current,n/a,n/a,{});e2a46258-7faa-11ec-56f4-ee6a90fb3966(0,41.60322,-73.08775,Current,n/a,n/a,{});e2bf410e-7faa-11ec-4e6c-fb4dc31a8dca(0,41.60322,-73.08775,Current,n/a,n/a,{});e315cf2e-7faa-11ec-509f-3ac75681694a(0,41.60322,-73.08775,Current,n/a,n/a,{});e38ed9e6-7faa-11ec-7615-d07bd9a6855d(0,41.60322,-73.08775,Current,n/a,n/a,{});e20e1af0-7faa-11ec-9e19-9433a783473e(0,41.60322,-73.08775,Current,n/a,n/a,{});e24541f6-7faa-11ec-0dbb-ed205ab6c800(0,41.60322,-73.08775,Current,n/a,n/a,{});e287134c-7faa-11ec-5646-2a276d46eda2(0,41.60322,-73.08775,Current,n/a,n/a,{});e2f988aa-7faa-11ec-8875-814e6bbb00cc(0,41.60322,-73.08775,Current,n/a,n/a,{});e33211ca-7faa-11ec-2d88-f17b66698736(71,41.60322,-73.08775,Current,n/a,n/a,{});e34c5d64-7faa-11ec-d8fa-dbea22203199(0,41.60322,-73.08775,Current,n/a,n/a,{})~latlong=~mainuid=AC000W018212008",
+ "AccuracyThreshold": 0.55,
+ "Minmax": "-360.828:0.000,-11.985:0.000,0.000:1.483",
+ "MachineLearningAlgorithm": "Logistic Regression",
+ "ParameterEstimates": "0.2298794,-1.4440399,-1.6790107,5.1446667",
+ "HasConstantTerm": 1
+}
