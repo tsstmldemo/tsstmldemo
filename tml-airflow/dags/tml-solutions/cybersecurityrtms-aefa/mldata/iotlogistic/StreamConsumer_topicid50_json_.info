@@ -1,0 +1,19 @@
+{
+ "Algokey": "StreamConsumer_topicid50_json",
+ "Algo": "StreamConsumer_topicid50_jsonlgt",
+ "Forecastaccuracy": 0.714,
+ "DependentVariable": "failure_prob",
+ "Filename": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid50.csv",
+ "Fieldnames": "Date,topicid50_Power_preprocessed_Trend,topicid50_Voltage_preprocessed_Trend,topicid50_Current_preprocessed_Trend",
+ "TestResultsFile": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid50_json_predictions.csv",
+ "Deployed": 1,
+ "DeployedTo": "Local Machine Deploy Folder",
+ "Created": "2025-03-02T21:06:40.992141907Z",
+ "Fullpathtomodels": "/Viper-ml/viperlogs/iotlogistic",
+ "Identifier": "Current~Current-(mA)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Current),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=e69bc518-7faa-11ec-bd3f-7e499c62e8ac(0,31.96860,-99.90181,Current,n/a,n/a,{});e70020f8-7faa-11ec-f700-7ab9451d48dc(0,31.96860,-99.90181,Current,n/a,n/a,{});e7872468-7faa-11ec-7dcc-e9f7eb3f2d4d(0,31.96860,-99.90181,Current,n/a,n/a,{});e7ed1070-7faa-11ec-bba4-3e75f92d30fb(0,31.96860,-99.90181,Current,n/a,n/a,{});e72de39e-7faa-11ec-6ae2-d2e4851e4b75(0,31.96860,-99.90181,Current,n/a,n/a,{});e653fa44-7faa-11ec-b60f-b5e5ec0d0ee1(0,31.96860,-99.90181,Current,n/a,n/a,{});e684e4b0-7faa-11ec-30a1-660b00d92147(0,31.96860,-99.90181,Current,n/a,n/a,{});e6b17f02-7faa-11ec-835f-be40dc9d9f77(0,31.96860,-99.90181,Current,n/a,n/a,{});e74090f2-7faa-11ec-6406-9483d0a08ae0(0,31.96860,-99.90181,Current,n/a,n/a,{});e7720218-7faa-11ec-5765-f34c7cbb2c8d(0,31.96860,-99.90181,Current,n/a,n/a,{});e7a205a8-7faa-11ec-1279-d0d9e2ea5608(0,31.96860,-99.90181,Current,n/a,n/a,{})~latlong=~mainuid=AC000W020498202",
+ "AccuracyThreshold": 0.55,
+ "Minmax": "0.000:0.000,-9.325:0.000,0.000:0.000",
+ "MachineLearningAlgorithm": "Logistic Regression",
+ "ParameterEstimates": "2.2261995,0.0000000,-3.3753892,0.0000000",
+ "HasConstantTerm": 1
+}

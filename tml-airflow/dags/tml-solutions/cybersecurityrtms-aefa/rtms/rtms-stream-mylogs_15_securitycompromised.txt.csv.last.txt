@@ -1,0 +1,7 @@
+3
+4
+3.00
+20
+20
+[Topic=rtms-stream-mylogs][MessageFound=(bird_A3 datasource - 1131567296 2005.11.09 cn665 security compromised Nov 9 12:14:56 cn665/cn665 ntpd23982: synchroni)][UserSearch=(security compromised)];[Topic=rtms-stream-mylogs][MessageFound=(19: pam_unix(sshd:auth): check pass user unknown security compromised Dec 10 09:08:38 LabSZ sshd24419: pam_unix(sshd:)][UserSearch=(security compromised)];
+security compromised;

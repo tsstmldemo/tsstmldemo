@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<base target="/" />    
+<meta charset="UTF-8" />
+<link rel="shortcut icon" type="image/x-icon" href="./oticsico.png" />
+<title>Real-Time Cyber Threats and Network Monitoring With Real-Time Memory</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./css/rtmsstyles.css" />
+  </head>
+
+  <body style="background: linear-gradient(135deg,  rgba(111, 10, 0,10) 0%,rgba(0, 128, 255,1) 50%,rgba(0, 128, 255,1) 51%,rgba(51, 0, 0,1) 100%);">
+  <div class="row justify-content-md-center">
+
+    <div id="wrapper">
+	
+      <div class="content-area">
+	  <center>
+<label id="maintitle"><b><h1><font color='white'><b>Real-Time Cyber Threats and Network Monitoring with TML Real-Time Memory</b></h1></b></label>
+
+        <div class="container-fluid">
+
+<h6>
+<b><font color='white'>Last Kafka Access Time:</font></b></b> <label id="accesstime"></label><br>
+<b><font color='white'>Kafka Cluster:</font></b> <label id="kafkacluster"></label><br>			
+</h6>
+
+        <div class="loader" id="loaderdiv" style="display:none;float: left"></div>
+         <button id="start" class="btn btn1" name="submit" style="background-color: #f44336;">Start Streaming</button>  
+<label id="statustext"></label>
+<div style="float: right;display:block;" class="custom-switch custom-switch-label-io">
+</div>	
+
+          <div class="main">
+            <div class="row mt-4">
+              <div class="col-md-5">
+                <div class="box columnbox mt-4">
+                  <div id="columnchart"></div>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="box  mt-4">
+                  <div id="linechart"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-5">
+                <div class="box radialbox mt-4">
+                  <div id="circlechart"></div>
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="box mt-4">
+                  <div class="mt-4">
+                    <div id="progress1"></div>
+                  </div>
+                  <div class="mt-4">
+                    <div id="progress2"></div>
+                  </div>
+                  <div class="mt-4">
+                    <div id="progress3"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+  
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="./js/rtmsscripts.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<!-- ============================================================  -->
+<script>
+// load current chart package
+google.charts.load("current", {
+	packages: ["corechart", "line"]
+});
+
+google.charts.setOnLoadCallback(drawChart);
+google.charts.load('current', {
+	'packages': ['table', 'annotatedtimeline', 'gauge', 'bar', 'sankey']
+});
+
+google.charts.setOnLoadCallback(drawTable2);
+
+var START = 0;
+var datatbl;
+var maintable;
+var dataintable = [];
+var ws;
+var topic = "";
+var offset = -1;
+var groupid = "";
+var append = 0;
+var rollbackoffset = 0;
+var topictype = "";
+var vipertoken = "";
+var consumerid = "";
+var secure = 0;
+var kafkacluster = "";
+var idkeyarr;
+var timestart = "";
+var timeend = "";
+var mainkafkatopic = "";
+var maintotalmessages = 0;
+var vipervizerror = "";
+
+
+function drawChart(jsondata, topic) {
+
+	if (jsondata) {
+
+		var text;
+		var val;
+		//  var partitionarr=[];
+		var createdon;
+		var winstart;
+		var winend;
+
+		var processtype;
+
+		var identifier;
+		var idarr;
+		//var topic;
+		var processbuf;
+		var normalvalue;
+		var processvariable = "";
+		var ubound;
+		var predictionvalue;
+		var totalmessages;
+		var kafkakey;
+		var offset;
+		var partition;
+		var arr;
+		var st;
+		var ed;
+		var et;
+		var vbuf;
+		var buf;
+		var vbuf2;
+		var varr;
+		var msgiddatastr = "";
+		var Maintopic;
+         var jsonhist="";
+		let rownum = 0;
+
+		for (j in jsondata.TopicReads) {
+			//get the fields
+			kafkakey = jsondata.TopicReads[j].kafkakey;
+			//try {
+			if (kafkakey != null && !kafkakeyarr.includes(kafkakey) && kafkakey.length > 0) {
+
+                jsonhist=jsonhist+JSON.stringify(jsondata.TopicReads[j]) +",";
+             
+				kafkakeyarr.push(kafkakey);
+
+				createdon = jsondata.TopicReads[j].TimeStamp;
+
+                entity = jsondata.TopicReads[j].Entity;
+                rtms = jsondata.TopicReads[j].hyperprediction;
+                attack = jsondata.TopicReads[j].FinalAttackScore;
+                pattern = jsondata.TopicReads[j].FinalPatternScore;
+                numattack = jsondata.TopicReads[j].NumAttackWindowsFound;
+                numpattern = jsondata.TopicReads[j].NumPatternWindowsFound;
+
+				processtype = jsondata.TopicReads[j].Preprocesstype;
+				usersearch = jsondata.TopicReads[j].UserSearchValues;
+
+				remember = jsondata.TopicReads[j].RememberPastWindows;
+				patternthresh = jsondata.TopicReads[j].PatternThreshold;
+				activity = jsondata.TopicReads[j].ActivityLevel;
+				comment = jsondata.TopicReads[j].TMLComment;
+				searchfound = jsondata.TopicReads[j].SearchTextFound;
+            
+				topic = jsondata.TopicReads[j].Topic;
+				Maintopic = jsondata.TopicReads[j].Maintopic;
+				kafkakey = jsondata.TopicReads[j].kafkakey;
+				offset = jsondata.TopicReads[j].Offset;
+				partition = jsondata.TopicReads[j].Partition;
+                searchentity=jsondata.TopicReads[j].SearchEntity;
+
+				arr = [createdon, rtms, attack, pattern, "192.168." + entity, numattack, numpattern, processtype, usersearch, remember,patternthresh,activity,comment,searchfound,searchentity,topic,Maintopic, kafkakey, offset, partition];
+				dataintable.push(arr)
+				rownum++;
+
+				//predictioncount = predictioncount + 1;
+
+			}
+		}
+
+		maintotalmessages = maintotalmessages + rownum;
+		document.getElementById('totrecs').innerHTML = maintotalmessages;
+
+		if (rownum > 0) {
+			document.getElementById('tottime').innerHTML = "<font size=3><b>Start:</b> " + timestart + "<b><br>End:</b> " + timeend + "</font>"
+				drawTable2();
+                   document.getElementById("txtData").value="["+jsonhist.slice(0,-1) + "]";
+		}
+	}
+
+}
+
+
+
+function drawTable2() {
+
+	if (maintable == null) {
+		maintable = new google.visualization.Table(document.getElementById('table_div'));
+	}
+
+	var formatter = new google.visualization.NumberFormat({
+			groupingSymbol: '',
+			fractionDigits: 0
+		});
+	var formatter2 = new google.visualization.NumberFormat({
+			groupingSymbol: '',
+			fractionDigits: 3
+		});
+
+	if (datatbl == null) {
+		datatbl = new google.visualization.DataTable();
+
+				//arr = [createdon, rtms, attack, pattern, "192.168." + entity, numattack, numpattern, processtype, usersearch, remember,patternthresh,activity,comment,searchfound,topic,maintopic, kafkakey, offset, partition];
+
+		datatbl.addColumn('string', 'Date/Time');
+		datatbl.addColumn('string', 'RTMS Score');
+		datatbl.addColumn('string', 'Attack Score');
+		datatbl.addColumn('string', 'Pattern Score');
+		datatbl.addColumn('string', 'Entity');
+		datatbl.addColumn('string', 'Attack Windows Found');
+		datatbl.addColumn('string', 'Pattern Windows Found');
+		datatbl.addColumn('string', 'Processtype');
+
+		datatbl.addColumn('string', 'User Search Terms');
+		datatbl.addColumn('string', 'Sliding Windows to Remember');
+		datatbl.addColumn('string', 'Pattern Threshold');
+		datatbl.addColumn('string', 'Predicted Risk Level');
+		datatbl.addColumn('string', 'TML Comment');
+		datatbl.addColumn('string', 'Text Containing Search Terms');
+		datatbl.addColumn('string', 'Search Entity');        
+		datatbl.addColumn('string', 'Topic');
+		datatbl.addColumn('string', 'Main Topic');
+
+		datatbl.addColumn('string', 'Kafkakey');
+		datatbl.addColumn('number', 'Offset');
+		datatbl.addColumn('number', 'Partition');
+
+		datatbl.sort({
+			column: 1,
+			desc: true
+		});
+
+		maintable.clearChart();
+
+		maintable.draw(datatbl, {
+			showRowNumber: true,
+			width: '100%',
+			height: '100%',
+			page: 'enable',
+			pageSize: 30,
+			allowHtml: true
+		});
+		if (append == 0) {
+			datatbl.removeRows(0, datatbl.getNumberOfRows() - 1);
+		}
+	} else {
+
+		//console.log("datatbl=",datatbl);
+
+
+		formatter.format(datatbl, 1);
+		formatter2.format(datatbl, 2);
+		datatbl.sort({
+			column: 1,
+			desc: true
+		});
+		if (datatbl.getNumberOfRows() > 0 && append == 0) {
+			datatbl.removeRows(0, datatbl.getNumberOfRows() - 1);
+		}
+
+		datatbl.addRows(dataintable);
+		maintable.clearChart();
+		maintable.draw(datatbl, {
+			showRowNumber: true,
+			width: '100%',
+			height: '100%',
+			page: 'enable',
+			pageSize: 30,
+			allowHtml: true,
+			'cssClassNames': cssClassNames
+		});
+
+		formatter = null;
+		formatter2 = null;
+	//	datatbl.removeRows(0,datatbl.getNumberOfRows()-1)
+
+	}
+
+	dataintable = [];
+
+}
+
+
+//////////////////////////////////////////////////////////////////// MAIN WEBSOCKET STREAMING FUNCTION /////////////////////////////
+function streamLiveKafkaData() {
+
+	if ("WebSocket" in window) {
+		var url = window.location.host;
+		console.log(url);
+		mainport = url.split(":")[1];
+
+		var urlParams = new URLSearchParams(window.location.search);
+		var keys = urlParams.keys();
+		var entries = urlParams.entries();
+		for (pair of entries) {
+			if (pair[0] == "topic") {
+				topic = pair[1];
+			}
+
+			if (pair[0] == "topictype") {
+				topictype = pair[1];
+			}
+			if (pair[0] == "secure") {
+				secure = pair[1];
+			}
+			if (pair[0] == "vipertoken") {
+				vipertoken = pair[1];
+			}
+
+			if (pair[0] == "consumerid") {
+				consumerid = pair[1];
+			}
+
+			if (pair[0] == "offset") {
+				offset = pair[1];
+			}
+
+			if (pair[0] == "rollbackoffset") {
+				rollbackoffset = pair[1];
+			}
+			if (pair[0] == "groupid") {
+				groupid = pair[1];
+			}
+			if (pair[0] == "append") {
+				append = pair[1];
+			}
+		}
+
+ <!-- ************************************* CREATE WEBSOCKET OBJECT **************************** -->
+            if (window.location.href.indexOf("http://")!=-1){
+		     if (window.location.href.indexOf("/viz/")!=-1){
+                ws = new WebSocket("ws://"+url+"/viz/ws");
+             }else{
+                  ws = new WebSocket("ws://"+url+"/ws");
+             } 
+        }else{
+             if (window.location.href.indexOf("/viz/")!=-1){                                                                            
+                 ws = new WebSocket("wss://"+url+"/viz/ws");
+             }else{
+               ws = new WebSocket("wss://"+url+"/ws");
+             }
+           }
+
+
+ <!-- ************************************* CREATE WEBSOCKET OBJECT **************************** -->
+		
+		ws.onmessage = function (event) {
+			curTime = new Date();
+			var eventdata = `${event.data}`;
+
+			var maindata = eventdata.replace(/\\"/g, '"');
+			maindata = maindata.substr(1, maindata.length - 3);
+			if (maindata == "") {
+				return
+			}
+
+//			 console.log("-------------maindata=",maindata);
+
+			var obj;
+			try {
+				obj = JSON.parse(maindata);
+			} catch (e) {
+				console.log("Json parse issue=", e.message);
+				return;
+			}
+
+			if (obj.ERROR) {
+				//				   $("#statustext").val("Websocket ERROR.."+obj.ERROR);
+				document.getElementById('statustext').innerHTML = "<font color='white'>Websocket ERROR.." + obj.ERROR + "</font>";
+
+				ws.close(1000);
+				alert(obj.ERROR);
+				ws = null;
+				$("#start").attr("disabled", false);
+				$("#start").html("Start Streaming");
+				return
+			}
+
+			if (START == 0) {
+				if (ws) {
+					ws.close(1000);
+				}
+				ws = null;
+				return;
+			}
+			if (append == 0) {
+				dataintable.splice(0, dataintable.length)
+
+				//     datainchart.splice(0, datainchart.length)
+				//predictioncount = 0;
+				jsonhist = null;
+				kafkakeyarr.splice(0, kafkakeyarr.length)
+			}
+
+			vipervizerror = "";
+
+			if (obj.VIPERVIZERROR) {
+				document.getElementById('statustext').innerHTML = "<font color='white'>TOO MANY PEOPLE CONNECTED</font>";
+				vipervizerror = "<font color='white'>TOO MANY PEOPLE CONNECTED</font>";
+				//			  alert(obj.VIPERVIZERROR);
+				return
+			}
+
+			kafkacluster = obj.Webkafkacluster
+			mainkafkatopic = obj.Webtopic
+
+			document.getElementById('accesstime').innerHTML = "<font color='white'>" + curTime + "</font>";
+			document.getElementById('kafkacluster').innerHTML = "<font color='white'>" + kafkacluster + ", Kafka Topic: " + obj.Webtopic + "</font>";
+
+			//////////////////////////////////////////////////// START FUNCTION CALLS FOR CHARTING
+			drawChart(obj, mainkafkatopic);
+			
+//			sleep(2000);
+		
+    		
+			//addHeatdata(obj);
+	        
+	//		sleep(2000);
+
+         	var status = document.getElementById("pietable").style.display;
+
+	        if (status == 'block' ) {		
+			 try{
+        	   startpiechart(mapset);			   
+			 }catch(e){
+               
+			 }				 
+	        }				
+			/////////////////////////////////////////////////////////////////////////////////////////
+
+			obj = null;
+			maindata = null;
+			eventdata = null;
+
+		};
+
+		ws.onclose = function (event) {
+			//console.log("event=",event);
+
+			if (event.wasClean) {
+				console.log(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+			} else {
+				console.log('[close] Connection died');
+
+			}
+			if (ws) {
+				ws.close(1000);
+			}
+			ws = null;
+			var el = document.getElementById('loaderdiv');
+			el.style.display = "none";
+
+			$("#start").attr("disabled", false);
+			//$("#statustext").val("Websocket closed");
+			if (vipervizerror != "") {
+				document.getElementById('statustext').innerHTML = vipervizerror;
+			} else {
+				document.getElementById('statustext').innerHTML = "<font color='white'>WEBSOCKET Closed</font>";
+			}
+
+			$("#start").html("Start Streaming");
+		};
+		ws.onopen = function (error) {
+			var password = ""; //document.getElementById("dashpass").value;
+
+			// SEND DATA BACK TO VIPERVIZ ////////////////////////////////////////////
+			var sendbuffer = "{\"Topic\":\"" + topic + "\",\"Topictype\":\"" + topictype + "\",\"Secure\":" + secure + ",\"Vipertoken\":\"" + vipertoken + "\",\"Consumerid\":\"" + consumerid + "\",\"Offset\":\"" + offset + "\",\"RollbackOffset\":\"" + rollbackoffset + "\",\"Groupid\":\"" + groupid + "\"}";
+
+			ws.send(sendbuffer);
+			//////////////////////////////////////////////////////////////////////////
+			var el = document.getElementById('loaderdiv');
+			el.style.display = "block";
+
+		};
+
+		ws.onerror = function (error) {
+			if (ws) {
+				ws.close(1000);
+			}
+			console.log(`[error] ${error.message}`);
+			document.getElementById('statustext').innerHTML = "<font color='white'>WEBSOCKET ERROR.." + `[error] ${error.message}` + "</font>";
+
+		};
+
+	} else {
+
+		// The browser doesn't support WebSocket
+		console.log("WebSocket NOT supported by your Browser!");
+	}
+}
+		
+	    function saveDynamicDataToFile(topic) {
+
+            var userInput = document.getElementById("txtData").value;	
+            const textToBLOB = new Blob([userInput], { type: "text/plain;charset=utf-8" });
+           const sFileName = topic+"-LOG-JSON.json";	   // The file to save the data.
+
+           let newLink = document.createElement("a");
+           newLink.download = sFileName;
+
+           if (window.webkitURL != null) {
+              newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+           }
+           else {
+            newLink.href = window.URL.createObjectURL(textToBLOB);
+            newLink.style.display = "none";
+            document.body.appendChild(newLink);
+           }
+
+        newLink.click(); 
+		
+        }
+        
+
+	$('#Export2').click( function(e) {
+	
+	     e.preventDefault(); /*your_code_here;*/ 
+		 saveDynamicDataToFile(topic);
+		 
+		 
+		 return false; 
+	} );
+    
+$('#Export').click(function () {
+	if (topic.length > 0) {
+		var headerRow = "";
+		var number_of_columns = datatbl.getNumberOfColumns();
+		for (var i = 0; i < number_of_columns; i++) {
+			headerRow += datatbl.getColumnLabel(i).replace("\n", " : ");
+			headerRow += (i === number_of_columns - 1) ? "\n" : ",";
+		}
+		var csvFormattedDataTable = headerRow + google.visualization.dataTableToCsv(datatbl);
+		var encodedUri = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csvFormattedDataTable);
+		this.href = encodedUri;
+		this.download = topic + "-cyber-data.csv";
+		this.target = '_blank';
+	} else {
+		alert("Start streaming first");
+	}
+});
+
+$("#idForm").submit(function (e) {
+	if (ws && START == 1) {
+		ws.close(1000);
+		ws = null;
+		e.preventDefault(); // avoid to execute the actual submit of the form.
+		START = 0;
+		$("#start").html("Start Streaming");
+		$("#start").attr("disabled", true);
+		//	    $("#statustext").val("WEBSOCKET CLOSING...");
+		document.getElementById('statustext').innerHTML = "<font color='white'>WEBSOCKET CLOSING...</font>";
+
+	} else {
+		e.preventDefault(); // avoid to execute the actual submit of the form.
+		START = 1;
+		//   $("#statustext").val("WEBSOCKET OPEN..Receiving Kafka Msgs...");
+		document.getElementById('statustext').innerHTML = "<font color='white'>WEBSOCKET OPEN..Receiving Kafka Msgs...</font>";
+
+		$("#start").html("Stop Streaming");
+		streamLiveKafkaData();
+
+	}
+
+});
+
+		streamLiveKafkaData();
+
+</script>
+
+<form id="idForm">
+ <textarea name="txtData" id="txtData" style="display: none;" class="textboxmulti"></textarea> 
+<table style="width: 100%;">
+<tr>
+<td>
+<img src='./help.png' width=30 height=27 class="padding" style="float: top;" onclick="image('table','')">	
+<center><a id="Export" href="#"> Download as CSV </a> | <a id="Export2" href="#">Download JSON</a></center>
+<div id="table_div"></div>
+</td>
+</tr>
+</table>
+
+  </form>    
+  </body>
+</html>
