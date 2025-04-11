@@ -1,0 +1,7 @@
+6
+18
+6.00
+7
+7
+[Topic=rtms-stream-mylogs][MessageFound=(55:46 LabSZ sshd24200: reverse mapping checking getaddrinfo for ns.marryaldkfaczcz.com 173.234.31.186 failed - POSSIBLE BREAK-IN ATTEM)][UserSearch=(getaddrinfo for ns.marryaldkfaczcz.com)];[Topic=rtms-stream-mylogs][MessageFound=(29439: synchronized to 10.100.16.250  stratum 3 getaddrinfo for ns.marryaldkfaczcz.com - 1131566885 2005.11.09 cn591 Nov 9 12:08:05 cn59)][UserSearch=(getaddrinfo for ns.marryaldkfaczcz.com)];[Topic=rtms-stream-mylogs][MessageFound=(.11.09 dn234 Nov 9 12:12:26 dn234/dn234 ntpd11132getaddrinfo for ns.marryaldkfaczcz.com: synchronized to 10.100.28.250  stratum 3 - 1131)][UserSearch=(getaddrinfo for ns.marryaldkfaczcz.com)];[Topic=rtms-stream-mylogs][MessageFound=(datasource - 1131567325 2005.11.09 getaddrinfo for ns.marryaldkfaczcz.comtbird-admin1 Nov 9 12:15:25 local@tbird-admin1 /ap)][UserSearch=(getaddrinfo for ns.marryaldkfaczcz.com)];[Topic=rtms-stream-mylogs][MessageFound=(ul 27 14:42:00 combo kernel: isapnp: Scanning for getaddrinfo for ns.marryaldkfaczcz.comPnP cards... Jul 27 14:42:00 combo kernel: isapnp:)][UserSearch=(getaddrinfo for ns.marryaldkfaczcz.com)];
+getaddrinfo for ns.marryaldkfaczcz.com;

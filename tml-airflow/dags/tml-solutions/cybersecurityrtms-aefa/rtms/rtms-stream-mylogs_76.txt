@@ -1,0 +1,2 @@
+76,5.15,rtms-stream-mylogs,na,Sun  02 Mar 2025 20:42:13.4044 UTC,0.00,iot-preprocess,0.00,@authentication failure:192.168.--entity--:Invalid user ;{rtms-stream-mylogs,/rawdata/rtms/rtms-stream-mylogs_76.txt}
+76,5.15,rtms-stream-mylogs,na,Sun  02 Mar 2025 20:25:43.0914 UTC,0.00,iot-preprocess,0.00,@authentication failure:192.168.--entity--:Invalid user ;{rtms-stream-mylogs,,}

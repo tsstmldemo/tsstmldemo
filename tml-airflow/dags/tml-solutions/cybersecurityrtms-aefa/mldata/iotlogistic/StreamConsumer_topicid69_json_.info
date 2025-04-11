@@ -1,0 +1,19 @@
+{
+ "Algokey": "StreamConsumer_topicid69_json",
+ "Algo": "StreamConsumer_topicid69_jsonlgt",
+ "Forecastaccuracy": 0.896,
+ "DependentVariable": "failure_prob",
+ "Filename": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid69.csv",
+ "Fieldnames": "Date,topicid69_Power_preprocessed_Trend,topicid69_Voltage_preprocessed_Trend,topicid69_Current_preprocessed_Trend",
+ "TestResultsFile": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid69_json_predictions.csv",
+ "Deployed": 1,
+ "DeployedTo": "Local Machine Deploy Folder",
+ "Created": "2025-03-02T21:10:31.065655305Z",
+ "Fullpathtomodels": "/Viper-ml/viperlogs/iotlogistic",
+ "Identifier": "Power~Power-(mW)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Power),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=ee239e6e-7faa-11ec-c24e-b5f55eca5c70(0,31.96860,-99.90181,Power,n/a,n/a,{});ee6b5c7c-7faa-11ec-17f0-5297421c3228(0,31.96860,-99.90181,Power,n/a,n/a,{});ee90a1ee-7faa-11ec-5035-5d80269a986d(0,31.96860,-99.90181,Power,n/a,n/a,{});ee517578-7faa-11ec-15f5-bc900d614099(0,31.96860,-99.90181,Power,n/a,n/a,{});eeb027b2-7faa-11ec-e8f8-0a415b43477a(0,31.96860,-99.90181,Power,n/a,n/a,{});eee5b378-7faa-11ec-0ca4-587c68b83ecd(0,31.96860,-99.90181,Power,n/a,n/a,{});edddd834-7faa-11ec-fe24-30d6c675fd4d(0,31.96860,-99.90181,Power,n/a,n/a,{});ee00c9c0-7faa-11ec-27b2-9cf5eb7e197b(0,31.96860,-99.90181,Power,n/a,n/a,{});eece52f0-7faa-11ec-cf4f-ee271b87794b(0,31.96860,-99.90181,Power,n/a,n/a,{});ef13d5fa-7faa-11ec-767d-afa62c6139cd(0,31.96860,-99.90181,Power,n/a,n/a,{});ef2d7b7c-7faa-11ec-dd51-597846b55e06(0,31.96860,-99.90181,Power,n/a,n/a,{});ef524bd2-7faa-11ec-00a3-34237a5455d0(0,31.96860,-99.90181,Power,n/a,n/a,{})~latlong=~mainuid=AC000W020487093",
+ "AccuracyThreshold": 0.55,
+ "Minmax": "0.000:0.000,-10.302:0.000,0.000:0.000",
+ "MachineLearningAlgorithm": "Logistic Regression",
+ "ParameterEstimates": "0.0513155,0.0000000,-1.0693697,0.0000000",
+ "HasConstantTerm": 1
+}

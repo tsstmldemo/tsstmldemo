@@ -1,0 +1,19 @@
+{
+ "Algokey": "StreamConsumer_topicid43_json",
+ "Algo": "StreamConsumer_topicid43_jsonlgt",
+ "Forecastaccuracy": 0.74,
+ "DependentVariable": "failure_prob",
+ "Filename": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid43.csv",
+ "Fieldnames": "Date,topicid43_Power_preprocessed_Trend,topicid43_Voltage_preprocessed_Trend,topicid43_Current_preprocessed_Trend",
+ "TestResultsFile": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid43_json_predictions.csv",
+ "Deployed": 1,
+ "DeployedTo": "Local Machine Deploy Folder",
+ "Created": "2025-03-02T21:05:35.662227323Z",
+ "Fullpathtomodels": "/Viper-ml/viperlogs/iotlogistic",
+ "Identifier": "Current~Current-(mA)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Current),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=e4e65af8-7faa-11ec-1303-c9b39598ffb3(0,39.55005,-105.78207,Current,n/a,n/a,{});e549546e-7faa-11ec-4226-36cd51a1eac1(0,39.55005,-105.78207,Current,n/a,n/a,{});e5767b92-7faa-11ec-33f6-91065a693267(0,39.55005,-105.78207,Current,n/a,n/a,{});e5999758-7faa-11ec-aa72-f24ca1eea536(0,39.55005,-105.78207,Current,n/a,n/a,{});e5d025e8-7faa-11ec-670d-779ad31bf472(0,39.55005,-105.78207,Current,n/a,n/a,{});e614b046-7faa-11ec-61bb-b5f491630c79(0,39.55005,-105.78207,Current,n/a,n/a,{});e66cf18e-7faa-11ec-8944-07dfb88a8ed7(0,39.55005,-105.78207,Current,n/a,n/a,{});e523e88c-7faa-11ec-54db-806b51b4c44c(0,39.55005,-105.78207,Current,n/a,n/a,{});e62a53e2-7faa-11ec-37b1-1a152e60e129(0,39.55005,-105.78207,Current,n/a,n/a,{});e4be86fe-7faa-11ec-2f8f-f5b485582546(0,39.55005,-105.78207,Current,n/a,n/a,{});e503b53a-7faa-11ec-91bf-3797c6fcc37e(0,39.55005,-105.78207,Current,n/a,n/a,{});e5f38b50-7faa-11ec-23b1-3c0fe0505eb6(0,39.55005,-105.78207,Current,n/a,n/a,{});e68afb02-7faa-11ec-fc70-52fbce4ca588(0,39.55005,-105.78207,Current,n/a,n/a,{});e6a746ea-7faa-11ec-183d-acf76e6eaec7(0,39.55005,-105.78207,Current,n/a,n/a,{})~latlong=~mainuid=AC000W020501485",
+ "AccuracyThreshold": 0.55,
+ "Minmax": "0.000:0.000,-2.448:0.000,0.000:0.000",
+ "MachineLearningAlgorithm": "Logistic Regression",
+ "ParameterEstimates": "0.5072112,0.0000000,-1.2826085,0.0000000",
+ "HasConstantTerm": 1
+}

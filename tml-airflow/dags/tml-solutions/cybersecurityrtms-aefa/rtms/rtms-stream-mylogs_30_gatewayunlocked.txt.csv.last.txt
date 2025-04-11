@@ -1,0 +1,7 @@
+1
+1
+1.00
+86
+86
+[Topic=rtms-stream-mylogs][MessageFound=(0 07:27:58 LabSZ sshd24239: Received disconnect gateway unlocked from 192.168.6.11: 11: Bye Bye preauth Dec 10 0)][UserSearch=(gateway unlocked)];
+gateway unlocked;

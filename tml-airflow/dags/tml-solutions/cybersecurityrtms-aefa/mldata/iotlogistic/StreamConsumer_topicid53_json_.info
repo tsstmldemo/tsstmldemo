@@ -1,0 +1,19 @@
+{
+ "Algokey": "StreamConsumer_topicid53_json",
+ "Algo": "StreamConsumer_topicid53_jsonlgt",
+ "Forecastaccuracy": 0.948,
+ "DependentVariable": "failure_prob",
+ "Filename": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid53.csv",
+ "Fieldnames": "Date,topicid53_Power_preprocessed_Trend,topicid53_Voltage_preprocessed_Trend,topicid53_Current_preprocessed_Trend",
+ "TestResultsFile": "/Viper-ml/viperlogs/iotlogistic/StreamConsumer_topicid53_json_predictions.csv",
+ "Deployed": 1,
+ "DeployedTo": "Local Machine Deploy Folder",
+ "Created": "2025-03-02T21:07:25.723722545Z",
+ "Fullpathtomodels": "/Viper-ml/viperlogs/iotlogistic",
+ "Identifier": "Voltage~Line-Voltage-(mV)~iot-preprocess~uid:metadata.dsn,subtopic:metadata.property_name (Voltage),value:datapoint.value,identifier:metadata.display_name,datetime:datapoint.updated_at,:allrecords,Joinedidentifiers:~oem:n/a~lat:n/a~long:n/a~location:n/a~identifier:n/a,IoT device performance and failures~Msgsjoined=e7278012-7faa-11ec-d55f-a08ada4784a8(123027,7.87305,80.77180,Voltage,n/a,n/a,{});e751ebcc-7faa-11ec-d486-e54f5c77266c(122934,7.87305,80.77180,Voltage,n/a,n/a,{});e7de1782-7faa-11ec-f9f7-5d75d0fbe383(122903,7.87305,80.77180,Voltage,n/a,n/a,{});e7f8064c-7faa-11ec-ba58-f98a2a3355dd(122927,7.87305,80.77180,Voltage,n/a,n/a,{});e8102830-7faa-11ec-0b4d-cd29f26d10c5(123027,7.87305,80.77180,Voltage,n/a,n/a,{});e8908b56-7faa-11ec-a8b7-31837288d090(123058,7.87305,80.77180,Voltage,n/a,n/a,{});e7bad4fc-7faa-11ec-715f-616ede7b76c8(123168,7.87305,80.77180,Voltage,n/a,n/a,{});e874dd2a-7faa-11ec-a89a-ed48cd589fe8(123058,7.87305,80.77180,Voltage,n/a,n/a,{});e76c31da-7faa-11ec-0039-f36e3ac7782e(122903,7.87305,80.77180,Voltage,n/a,n/a,{});e7996a74-7faa-11ec-a9a6-1e4246ed6180(123058,7.87305,80.77180,Voltage,n/a,n/a,{});e826eade-7faa-11ec-aab6-8b3f4a46a589(122903,7.87305,80.77180,Voltage,n/a,n/a,{});e84765e8-7faa-11ec-e409-a4e50fef2e50(122903,7.87305,80.77180,Voltage,n/a,n/a,{})~latlong=~mainuid=AC000W020485383",
+ "AccuracyThreshold": 0.55,
+ "Minmax": "-213.821:0.000,-1.634:0.000,-0.491:0.000",
+ "MachineLearningAlgorithm": "Logistic Regression",
+ "ParameterEstimates": "1.6628937,-2.4828941,-0.7679028,-1.5434742",
+ "HasConstantTerm": 1
+}
