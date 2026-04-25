@@ -1,0 +1,62 @@
+
+################# mysql-db-deployment.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: maadsdocker/mysql:latest
+        name: mysql
+        resources:
+         limits:
+          memory: "512Mi"
+          cpu: "1500m"
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "raspberry"
+        - name: MYSQLDB
+          value: "tmlids"
+        - name: MYSQLDRIVERNAME
+          value: "mysql"
+        - name: MYSQLHOSTNAME
+          value: "mysql:3306"
+        - name: MYSQLMAXCONN
+          value: "4"
+        - name: MYSQLMAXIDLE
+          value: "10"
+        - name: MYSQLPASS
+          value: "raspberry"
+        - name: MYSQLUSER
+          value: "root"
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: mysql

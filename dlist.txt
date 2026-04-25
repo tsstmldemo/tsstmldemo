@@ -1,0 +1,15 @@
+/raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurityrtms-3f10
+/raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurityrtms-3f10/rtms2
+/raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurityrtms-3f10/rtms
+/raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurityrtms-3f10/mldata
+/raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurityrtms-3f10/mldata/iotlogistic
+/raspberrypitss/tml-airflow/dags/tml-solutions/cybersecurityrtms-3f10/mldata/iotlogistic/deploy
+/raspberrypitss/tml-airflow/dags/tml-solutions/cybersecuritywithprivategpt-3f10
+/raspberrypitss/tml-airflow/dags/tml-solutions/iotsolution-3f10
+/raspberrypitss/tml-airflow/dags/tml-solutions/iotsolution-grpc-3f10
+/raspberrypitss/tml-airflow/dags/tml-solutions/iotsolution-restapi-3f10
+/raspberrypitss/tml-airflow/dags/tml-solutions/myawesometmlsolution-3f10
+/raspberrypitss/tml-airflow/dags/tml-solutions/myawesometmlsolution-3f10/rtms2
+/raspberrypitss/tml-airflow/dags/tml-solutions/myawesometmlsolutionml-3f10
+/raspberrypitss/tml-airflow/dags/tml-solutions/myawesometmlsolutionml-3f10/rtms2
+/raspberrypitss/tml-airflow/dags/tml-solutions/rtms2

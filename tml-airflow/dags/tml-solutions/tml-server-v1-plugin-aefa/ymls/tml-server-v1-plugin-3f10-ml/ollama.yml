@@ -1,0 +1,108 @@
+
+################# ollama.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama
+spec:
+  selector:
+    matchLabels:
+      app: ollama
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: ollama
+    spec:
+      containers:
+      - name: ollama
+        image:  # IF you DO NOT have NVIDIA GPU then CPU will be used
+        imagePullPolicy: IfNotPresent  # You can also use Always, Never
+        env:
+        - name: NVIDIA_VISIBLE_DEVICES
+          value: all
+        - name: DP_DISABLE_HEALTHCHECKS
+          value: xids
+        - name: WEB_CONCURRENCY
+          value: ""
+        - name: GPU
+          value: "1"
+        - name: COLLECTION
+          value: ""
+        - name: PORT
+          value: "11434"
+        - name: CUDA_VISIBLE_DEVICES
+          value: "0"
+        - name: TOKENIZERS_PARALLELISM
+          value: "false"
+        - name: temperature
+          value: ""
+        - name: rollbackoffset
+          value: ""
+        - name: ollama-model
+          value: ""
+        - name: deletevectordbcount
+          value: ""
+        - name: vectordbpath
+          value: ""
+        - name: topicid
+          value: ""
+        - name: enabletls
+          value: ""
+        - name: partition
+          value: ""
+        - name: vectordbcollectionname
+          value: ""
+        - name: ollamacontainername
+          value: ""
+        - name: mainip
+          value: ""
+        - name: mainport
+          value: ""
+        - name: embedding
+          value: ""
+        - name: agents_topic_prompt
+          value: ""
+        - name: teamlead_topic
+          value: ""
+        - name: teamleadprompt
+          value: ""
+        - name: supervisor_topic
+          value: ""
+        - name: supervisorprompt
+          value: ""
+        - name: agenttoolfunctions
+          value: ""
+        - name: agent_team_supervisor_topic
+          value: ""
+        - name: contextwindow
+          value: ""          
+        - name: TSS
+          value: "0"
+        - name: KUBE
+          value: "1"
+        resources:             # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+          limits:              # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+            nvidia.com/gpu: 1  # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+        ports:
+        - containerPort: 11434
+      tolerations:             # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+      - key: nvidia.com/gpu    # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+        operator: Exists       # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+        effect: NoSchedule     # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ollama-service
+  labels:
+    app: ollama-service
+spec:
+  type: NodePort #Exposes the service as a node ports
+  ports:
+  - port: 11434
+    name: p1
+    protocol: TCP
+    targetPort: 11434
+  selector:
+    app: ollama

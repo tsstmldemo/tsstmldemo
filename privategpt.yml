@@ -1,0 +1,78 @@
+
+################# privategpt.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: privategpt
+spec:
+  selector:
+    matchLabels:
+      app: privategpt
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: privategpt
+    spec:
+      containers:
+      - name: privategpt
+        image: --kubeprivategpt-- # IF you DO NOT have NVIDIA GPU use: maadsdocker/tml-privategpt-no-gpu-amd64
+        imagePullPolicy: IfNotPresent  # You can also use Always, Never
+        env:
+        - name: NVIDIA_VISIBLE_DEVICES
+          value: all
+        - name: DP_DISABLE_HEALTHCHECKS
+          value: xids
+        - name: WEB_CONCURRENCY
+          value: "--kubeconcur--"
+        - name: GPU
+          value: "1"
+        - name: COLLECTION
+          value: "--kubecollection--"
+        - name: PORT
+          value: "8001"
+        - name: CUDA_VISIBLE_DEVICES
+          value: "0"
+        - name: TOKENIZERS_PARALLELISM
+          value: "false"
+        - name: temperature
+          value: "--kubetemperature--"
+        - name: vectorsearchtype
+          value: "--kubevectorsearchtype--"
+        - name: contextwindowsize
+          value: "--kubecontextwindowsize--"
+        - name: vectordimension
+          value: "--kubevectordimension--"
+        - name: mainmodel
+          value: "--kubemainmodel--"
+        - name: mainembedding
+          value: "--kubemainembedding--"
+        - name: TSS
+          value: "0"
+        - name: KUBE
+          value: "1"
+        resources:             # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+          limits:              # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+            nvidia.com/gpu: 1  # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+        ports:
+        - containerPort: 8001
+      tolerations:             # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+      - key: nvidia.com/gpu    # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+        operator: Exists       # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+        effect: NoSchedule     # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: privategpt-service
+  labels:
+    app: privategpt-service
+spec:
+  type: NodePort #Exposes the service as a node ports
+  ports:
+  - port: 8001
+    name: p1
+    protocol: TCP
+    targetPort: 8001
+  selector:
+    app: privategpt

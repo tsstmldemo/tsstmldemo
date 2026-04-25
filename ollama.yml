@@ -1,0 +1,106 @@
+
+################# ollama.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama
+spec:
+  selector:
+    matchLabels:
+      app: ollama
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: ollama
+    spec:
+      containers:
+      - name: ollama
+        image: --ollamacontainername-- # IF you DO NOT have NVIDIA GPU then CPU will be used
+        imagePullPolicy: IfNotPresent  # You can also use Always, Never
+        env:
+        - name: NVIDIA_VISIBLE_DEVICES
+          value: all
+        - name: DP_DISABLE_HEALTHCHECKS
+          value: xids
+        - name: WEB_CONCURRENCY
+          value: "--agenticai-kubeconcur--"
+        - name: GPU
+          value: "1"
+        - name: COLLECTION
+          value: "--agenticai-kubecollection--"
+        - name: PORT
+          value: "11434"
+        - name: CUDA_VISIBLE_DEVICES
+          value: "0"
+        - name: TOKENIZERS_PARALLELISM
+          value: "false"
+        - name: temperature
+          value: "--agenticai-kubetemperature--"
+        - name: rollbackoffset
+          value: "--agenticai-rollbackoffset--"
+        - name: ollama-model
+          value: "--agenticai-ollama-model--"
+        - name: deletevectordbcount
+          value: "--agenticai-deletevectordbcount--"
+        - name: vectordbpath
+          value: "--agenticai-vectordbpath--"
+        - name: topicid
+          value: "--agenticai-topicid--"
+        - name: enabletls
+          value: "--agenticai-enabletls--"
+        - name: partition
+          value: "--agenticai-partition--"
+        - name: vectordbcollectionname
+          value: "--agenticai-vectordbcollectionname--"
+        - name: ollamacontainername
+          value: "--agenticai-ollamacontainername--"
+        - name: mainip
+          value: "--agenticai-mainip--"
+        - name: mainport
+          value: "--agenticai-mainport--"
+        - name: embedding
+          value: "--agenticai-embedding--"
+        - name: agents_topic_prompt
+          value: "--agenticai-agents_topic_prompt--"
+        - name: teamlead_topic
+          value: "--agenticai-teamlead_topic--"
+        - name: teamleadprompt
+          value: "--agenticai-teamleadprompt--"
+        - name: supervisor_topic
+          value: "--agenticai-supervisor_topic--"
+        - name: supervisorprompt
+          value: "--agenticai-supervisorprompt--"
+        - name: agenttoolfunctions
+          value: "--agenticai-agenttoolfunctions--"
+        - name: agent_team_supervisor_topic
+          value: "--agenticai-agent_team_supervisor_topic--"
+        - name: TSS
+          value: "0"
+        - name: KUBE
+          value: "1"
+        resources:             # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+          limits:              # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+            nvidia.com/gpu: 1  # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+        ports:
+        - containerPort: 11434
+      tolerations:             # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+      - key: nvidia.com/gpu    # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+        operator: Exists       # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+        effect: NoSchedule     # REMOVE or COMMENT OUT: IF you DO NOT have NVIDIA GPU
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ollama-service
+  labels:
+    app: ollama-service
+spec:
+  type: NodePort #Exposes the service as a node ports
+  ports:
+  - port: 11434
+    name: p1
+    protocol: TCP
+    targetPort: 11434
+  selector:
+    app: ollama

@@ -1,0 +1,288 @@
+
+     apiVersion: apps/v1
+     kind: Deployment
+     metadata:
+       name: tml-multi-agenticai-iot-3f10-ml_agenticai
+     spec:
+       selector:
+         matchLabels:
+           app: tml-multi-agenticai-iot-3f10-ml_agenticai
+       replicas: 3 # tells deployment to run 1 pods matching the template
+       template:
+         metadata:
+           labels:
+             app: tml-multi-agenticai-iot-3f10-ml_agenticai
+         spec:
+           containers:
+           - name: tml-multi-agenticai-iot-3f10-ml_agenticai
+             image: maadsdocker/tml-multi-agenticai-iot-3f10-ml_agenticai-amd64:latest
+             volumeMounts:
+             - name: dockerpath
+               mountPath: /var/run/docker.sock
+             - name: rawdata
+               mountPath: /rawdata   # container folder where the local folder will be mounted                           
+             ports:
+             - containerPort: 5050
+             - containerPort: 4040
+             - containerPort: 6060
+             env:
+             - name: TSS
+               value: '0'
+             - name: PROJECTNAME
+               value: 'tml-multi-agenticai-iot-3f10'                              
+             - name: SOLUTIONNAME
+               value: 'tml-multi-agenticai-iot-3f10-ml_agenticai'
+             - name: SOLUTIONDAG
+               value: 'solution_preprocessing_ml_agenticai_dag-tml-multi-agenticai-iot-3f10'
+             - name: GITUSERNAME
+               value: 'smaurice101'
+             - name: GITREPOURL
+               value: 'https://github.com/smaurice101/raspberrypitss.git'
+             - name: SOLUTIONEXTERNALPORT
+               value: '5050'
+             - name: CHIP
+               value: 'amd64'
+             - name: SOLUTIONAIRFLOWPORT
+               value: '4040'
+             - name: SOLUTIONVIPERVIZPORT
+               value: '6060'
+             - name: DOCKERUSERNAME
+               value: 'maadsdocker'
+             - name: CLIENTPORT
+               value: '0'
+             - name: EXTERNALPORT
+               value: '39399'
+             - name: KAFKACLOUDUSERNAME
+               value: ''
+             - name: VIPERVIZPORT
+               value: '49689'
+             - name: MQTTUSERNAME
+               value: 'smaurice'
+             - name: AIRFLOWPORT
+               value: '9000'
+             - name: GITPASSWORD
+               valueFrom:
+                 secretKeyRef:
+                  name: tmlsecrets 
+                  key: githubtoken                       
+             - name: KAFKACLOUDPASSWORD
+               valueFrom:
+                 secretKeyRef:
+                  name: tmlsecrets 
+                  key: kafkacloudpassword                      
+             - name: MQTTPASSWORD
+               valueFrom: 
+                 secretKeyRef:
+                   name: tmlsecrets 
+                   key: mqttpass                        
+             - name: READTHEDOCS
+               valueFrom:
+                 secretKeyRef:
+                   name: tmlsecrets 
+                   key: readthedocs          
+             - name: qip 
+               value: 'privategpt-service' # This is private GPT service in kubernetes
+             - name: KUBE
+               value: '1'
+             - name: step3localfileinputfile # STEP 3 localfile inputfile field can be adjusted here.
+               value: '/rawdatademo/IoTData.txt'
+             - name: step3localfiledocfolder # STEP 3 # STEP 3 docfolder inputfile field can be adjusted here.
+               value: ''               
+             - name: step4maxrows # STEP 4 maxrows field can be adjusted here.  Higher the number more data to process, BUT more memory needed.
+               value: '-1'
+             - name: step4bmaxrows # STEP 4b maxrows field can be adjusted here.  Higher the number more data to process, BUT more memory needed.
+               value: '-1'               
+             - name: step4cmaxrows # STEP 4c maxrows field can be adjusted here.  Higher the number more data to process, BUT more memory needed.
+               value: '-1'               
+             - name: step4crawdatatopic # STEP 4c
+               value: ''               
+             - name: step4csearchterms # STEP 4c 
+               value: ''               
+             - name: step4crememberpastwindows # STEP 4c 
+               value: ''               
+             - name: step4cpatternwindowthreshold # STEP 4c 
+               value: ''               
+             - name: step4crtmsscorethreshold # STEP 4c 
+               value: '' 
+             - name: step4cattackscorethreshold # STEP 4c 
+               value: '' 
+             - name: step4cpatternscorethreshold # STEP 4c 
+               value: ''                
+             - name: step4crtmsstream # STEP 4c 
+               value: ''                              
+             - name: step4clocalsearchtermfolder # STEP 4c 
+               value: ''                              
+             - name: step4clocalsearchtermfolderinterval # STEP 4c 
+               value: ''                                                            
+             - name: step4crtmsfoldername # STEP 4c 
+               value: ''                                                                           
+             - name: step4crtmsmaxwindows # STEP 4c adjust RTMSMAXWINDOWS for Step 4c
+               value: ''                                       
+             - name: step2raw_data_topic # STEP 2 
+               value: 'iot-raw-data,agent-responses,team-lead-responses,supervisor-responses,all-agents-responses'                           
+             - name: step2preprocess_data_topic # STEP 2 
+               value: 'iot-preprocess,iot-preprocess2'                           
+             - name: step4raw_data_topic # STEP 4
+               value: 'iot-raw-data'                           
+             - name: step4preprocess_data_topic # STEP 4
+               value: 'iot-preprocess'                                                         
+             - name: step4preprocesstypes # STEP 4
+               value: 'anomprob,trend,avg'                                                         
+             - name: step4jsoncriteria # STEP 4
+               value: 'uid=metadata.dsn,filter:allrecords~subtopics=metadata.property_name~values=datapoint.value~identifiers=metadata.display_name~datetime=datapoint.updated_at~msgid=datapoint.id~latlong=lat:long'                           
+             - name: step4ajsoncriteria # STEP 4a 
+               value: ''                           
+             - name: step4amaxrows # STEP 4a
+               value: ''                           
+             - name: step4apreprocesstypes # STEP 4a
+               value: ''                           
+             - name: step4araw_data_topic # STEP 4a
+               value: ''                           
+             - name: step4apreprocess_data_topic # STEP 4a
+               value: ''                           
+             - name: step4bpreprocesstypes # STEP 4b
+               value: ''                           
+             - name: step4bjsoncriteria # STEP 4b
+               value: ''                           
+             - name: step4braw_data_topic # STEP 4b 
+               value: ''                           
+             - name: step4bpreprocess_data_topic # STEP 4b 
+               value: ''                                          
+             - name: step5rollbackoffsets # STEP 5 rollbackoffsets field can be adjusted here.  Higher the number more training data to process, BUT more memory needed.
+               value: '500'                              
+             - name: step5processlogic # STEP 5 processlogic field can be adjusted here.  
+               value: 'classification_name=failure_prob:Power_preprocessed_AnomProb=55,n'                                                
+             - name: step5independentvariables # STEP 5 independent variables can be adjusted here.  
+               value: 'Power_preprocessed_AnomProb'                                                                              
+             - name: step6maxrows # STEP 6 maxrows field can be adjusted here.  Higher the number more predictions to make, BUT more memory needed.
+               value: '50'                              
+             - name: step9rollbackoffset # STEP 9 rollbackoffset field can be adjusted here.  Higher the number more information sent to privateGPT, BUT more memory needed.
+               value: '-1'                  
+             - name: step9prompt # STEP 9 Enter PGPT prompt
+               value: ''                  
+             - name: step9context # STEP 9 Enter PGPT context
+               value: ''                                 
+             - name: step9keyattribute
+               value: '' # Step 9 key attribtes change as needed  
+             - name: step9keyprocesstype
+               value: '' # Step 9 key processtypes change as needed                                               
+             - name: step9hyperbatch
+               value: '' # Set to 1 if you want to batch all of the hyperpredictions and sent to chatgpt, set to 0, if you want to send it one by one   
+             - name: step9vectordbcollectionname
+               value: ''   # collection name in Qdrant
+             - name: step9concurrency # privateGPT concurency, if greater than 1, multiple PGPT will run
+               value: ''
+             - name: CUDA_VISIBLE_DEVICES
+               value: '' # 0 for any device or specify specific number                
+             - name: step9docfolder # privateGPT docfolder to load files in Qdrant vectorDB local context
+               value: ''
+             - name: step9docfolderingestinterval # privateGPT docfolderingestinterval, number of seconds to wait before reloading files in docfolder
+               value: ''
+             - name: step9useidentifierinprompt # privateGPT useidentifierinprompt, if 1, add TML output json field Identifier, if 0 use prompt
+               value: ''                              
+             - name: step9searchterms # privateGPT searchterms, terms to search for in the chat response
+               value: ''                                             
+             - name: step9streamall # privateGPT streamall, if 1, stream all responses, even if search terms are missing, 0, if response contains search terms
+               value: ''                                                            
+             - name: step9temperature # privateGPT LLM temperature between 0 and 1 i.e. 0.3, if 0, LLM model is conservative, if 1 it hallucinates
+               value: ''                                             
+             - name: step9vectorsearchtype # privateGPT for QDrant VectorDB similarity search.  Must be either Cosine, Manhattan, Dot, Euclid
+               value: ''                                                                           
+             - name: step9contextwindowsize # context window size
+               value: ''                                                                                          
+             - name: step9pgptcontainername # privateGPT container name
+               value: ''                    
+             - name: step9pgpthost # privateGPT host ip i.e.: http://127.0.0.1
+               value: ''                    
+             - name: step9pgptport # privateGPT port i.e. 8001
+               value: ''                                                  
+             - name: step9vectordimension # privateGPT vector dimension
+               value: ''                                                                 
+             - name: step9brollbackoffset
+               value: '1'
+             - name: step9bdeletevectordbcount
+               value: '1'
+             - name: step9bvectordbpath
+               value: ''
+             - name: step9btemperature
+               value: '/rawdata/vectordb'
+             - name: step9bvectordbcollectionname
+               value: ''
+             - name: step9bollamacontainername
+               value: ''
+             - name: step9bCUDA_VISIBLE_DEVICES
+               value: 'maadsdocker/tml-privategpt-with-gpu-nvidia-amd64-llama3-tools'
+             - name: step9bmainip
+               value: ''
+             - name: step9bmainport
+               value: 'http://127.0.0.1'
+             - name: step9bembedding
+               value: '11434'
+             - name: step9bagents_topic_prompt
+               value: 'nomic-embed-text'
+             - name: step9bteamlead_topic
+               value: '
+        iot-preprocess:Are there any issues or anomalies in the JSON data values in the hyperprediction field? Specifically, the hypreprediction field indicates the value of the Preprocesstype field,
+        if the Preprocesstype is Avg, then the hyprepredictions are the average values of the first value in the Identifier field, which is Current for the 
+        device name in the mainuid field.
+        For example, if the hypreprediction=154646, and if Preprocesstype=Avg, and the first value in Identifier=Current, and mainuid=AC000W020496398 
+        then 154646 is the average of electrical current for device name AC000W020496398.  Determine if the trends electrical current values are normal or abnormal by looking at other similar jsons.
+        Do NOT focus on data quality, just focus on the hyperprediction, Identifier, and mainuid fields.;ml-data:Are there 
+        any issues in the JSON data values in the hyperprediction field? Specifically, the hypreprediction field contains the failure probability of IoT devices.  The mainuid field contains the device name.  
+        For example, if the failure probability of IoT devices in hyperprediction field is greater than 0.70, then this device, in the mainuid field, has a high probability of failure and should be investigated.
+        Do NOT focus on data quality, just focus on the trends on hyperprediction field values.   
+'
+             - name: step9bteamleadprompt
+               value: 'team-lead-responses'
+             - name: step9bsupervisor_topic
+               value: '
+      Are there any issues or major concerns in the data? The data are from IoT devices that are being monitored by individual agents. If you find issues or concerns, then
+      highlight the devices name (i.e. in the mainuid field) with details on whether the device failure probabilities are increasing or greater than 0.70.
+'
+             - name: step9bagenttoolfunctions
+               value: 'supervisor-responses'
+             - name: step9bagent_team_supervisor_topic
+               value: '
+        send_email:send_email: You are an email-sending agent. Use smtp parameters to send emails when there is an anomaly in the data, make sure to
+                     indicate the device name in the mainuid field. do not write a smtp script, actually send the email using the SMTP parameters
+                     smtp_server='smtp.gmail.com'
+                     smtp_port=587
+                     username='sebastian.maurice@gmail.com'
+                     password='dmvubtpdlfnxnnkk'
+                     sender='sebastian.maurice@gmail.com'
+                     recipient='sebastian.maurice@otics.ca,sebastian.maurice@gmail.com'
+                     subject=''
+                     body='';
+        average:average:You are an average agent.  Take average of the device failure probabilities.             
+'                              
+             - name: step1solutiontitle # STEP 1 solutiontitle field can be adjusted here. 
+               value: 'all-agents-responses'                              
+             - name: step1description # STEP 1 description field can be adjusted here. 
+               value: 'TML Multi-Agentic AI Solution for IoT '                                          
+             - name: KUBEBROKERHOST
+               value: 'This is an awesome TML Multi-Agentic AI real-time solution for IoT device monitoring built by TSS'         
+             - name: KAFKABROKERHOST
+               value: 'kafka-service:9092'                              
+           volumes: 
+           - name: dockerpath
+             hostPath:
+               path: /var/run/docker.sock
+           - name: rawdata
+             hostPath:
+               path: /mnt  # CHANGE AS NEEDED TO YOUR LOCAL FOLDER the paths will be specific to your environment
+   ---
+     apiVersion: v1
+     kind: Service
+     metadata:
+       name: 127.0.0.1:9092-visualization-service
+       labels:
+         app: tml-multi-agenticai-iot-3f10-ml_agenticai-visualization-service
+     spec:
+       type: ClusterIP
+       ports:
+       - port: 80 # Ingress port, if using port 443 will need to setup TLS certs
+         name: p1
+         protocol: TCP
+         targetPort: tml-multi-agenticai-iot-3f10-ml_agenticai
+       selector:
+         app: 6060

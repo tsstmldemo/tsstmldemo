@@ -1,0 +1,40 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka
+spec:
+  selector:
+    matchLabels:
+      app: kafka
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: kafka
+    spec:
+      containers:
+      - name: kafka
+        image: maadsdocker/kafka-amd64  # IF you DO NOT have NVIDIA GPU use: maadsdocker/tml-privategpt-no-gpu-amd64
+        env:
+        - name: KAFKA_HEAP_OPTS
+          value: "-Xmx512M -Xms512M"
+        - name: PORT
+          value: "9092"
+        - name: TSS
+          value: "0"
+        - name: KUBE
+          value: "1"
+        - name: KUBEBROKERHOST
+          value: "kafka-service:9092"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-service
+spec:
+  ports:
+  - port: 9092
+  selector:
+    app: kafka  
+  
